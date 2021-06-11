@@ -24,56 +24,56 @@ ostream &Complex::print(ostream &os) const{
 	return os;
 }
 
-inline Complex Complex::operator+(Complex c) const{
+Complex Complex::operator+(Complex c) {
 	Complex sum(this->Re + c.Re, this->Im + c.Im);
 	return sum;
 }
 
-inline Complex Complex::operator-(Complex c) const{
+Complex Complex::operator-(Complex c) {
 	Complex diff(this->Re - c.Re, this->Im - c.Im);
 	return diff;
 }
 
-inline Complex &Complex::operator+=(Complex c) {
+Complex &Complex::operator+=(Complex c) {
 	this->Re += c.Re;
 	this->Im += c.Im;
 	this->calculateVersor();
 	return *this;
 }
 
-inline Complex &Complex::operator-=(Complex c){
-	this->Re += c.Re;
-	this->Im += c.Im;
+Complex &Complex::operator-=(Complex c){
+	this->Re -= c.Re;
+	this->Im -= c.Im;
 	this->calculateVersor();
 	return *this;
 }
 
-inline bool Complex::operator==(Complex c) const{
+bool Complex::operator==(Complex c) {
 	return (this->Re == c.Re && this->Im == c.Im) ? true : false;
 }
 
-inline bool Complex::operator!=(Complex c) const{
+bool Complex::operator!=(Complex c) {
 	return (this->Re == c.Re && this->Im == c.Im) ? false : true;
 }
 
-inline Complex Complex::operator*(Complex c) const{
+Complex Complex::operator*(Complex c) {
 	Complex mult(this->apsoluteValue * c.apsoluteValue, this->angle + c.angle);
 	return mult;
 }
 
-inline Complex Complex::operator/(Complex c) const{
+Complex Complex::operator/(Complex c) {
 	Complex div(this->apsoluteValue / c.apsoluteValue, this->angle - c.angle);
 	return div;
 }
 
-inline Complex &Complex::operator*=(Complex c) {
+Complex &Complex::operator*=(Complex c) {
 	this->apsoluteValue *= c.apsoluteValue;
 	this->angle += c.angle;
 	this->calculateNormal();
 	return *this;
 }
 
-inline Complex &Complex::operator/=(Complex c) {
+Complex &Complex::operator/=(Complex c) {
 	this->apsoluteValue /= c.apsoluteValue;
 	this->angle -= c.angle;
 	this->calculateNormal();

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <random>
 
 #define PI 3.1415926536
 using namespace std;
@@ -13,8 +14,8 @@ class Complex{
 	double apsoluteValue;
 
 	Complex &calculateNormal(){
-		Re = apsoluteValue * cos(angle);
-		Im = apsoluteValue * sin(angle); 
+		Re = apsoluteValue * cos(angle * (PI/180));
+		Im = apsoluteValue * sin(angle * (PI/180)); 
 		return *this;
 	}
 
@@ -38,12 +39,14 @@ public:
 	Complex &setNormal(double re, double im){
 		Re = re;
 		Im = im;
+		this->calculateVersor();
 		return *this;
 	}
 
 	Complex &setVersor(double ap, double an){
 		apsoluteValue = ap;
 		angle = an;
+		this->calculateNormal();
 		return *this;
 	}
 
@@ -52,17 +55,16 @@ public:
 	
 	ostream &print(ostream &os = cout) const;
 
-	Complex operator+(Complex c) const;
-	Complex operator-(Complex c) const;
+	Complex operator+(Complex c);
+	Complex operator-(Complex c);
 	Complex &operator+=(Complex c);
 	Complex &operator-=(Complex c);
-	bool operator==(Complex c) const;
-	bool operator!=(Complex c) const;
-	Complex operator*(Complex c) const;
-	Complex operator/(Complex c) const;
+	bool operator==(Complex c);
+	bool operator!=(Complex c);
+	Complex operator*(Complex c);
+	Complex operator/(Complex c);
 	Complex &operator*=(Complex c);
 	Complex &operator/=(Complex c);
-
 };
 
 #endif
