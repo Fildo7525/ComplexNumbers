@@ -1,8 +1,5 @@
 #include "complex.h"
 
-#include <sstream>
-#include <string>
-
 string Complex::getNumberNormal() const{
 	stringstream ss;
 	string out;
@@ -49,11 +46,11 @@ Complex &Complex::operator-=(Complex c){
 }
 
 bool Complex::operator==(Complex c) {
-	return (this->Re == c.Re && this->Im == c.Im) ? true : false;
+	return ((int)(this->Re*EQUALS) == (int)(c.Re*EQUALS) && (int)(this->Im*EQUALS) == (int)(c.Im*EQUALS)) ? true : false;
 }
 
 bool Complex::operator!=(Complex c) {
-	return (this->Re == c.Re && this->Im == c.Im) ? false : true;
+	return ((int)(this->Re*EQUALS) == (int)(c.Re*EQUALS) && (int)(this->Im*EQUALS) == (int)(c.Im*EQUALS)) ? false : true;
 }
 
 Complex Complex::operator*(Complex c) {
@@ -78,4 +75,50 @@ Complex &Complex::operator/=(Complex c) {
 	this->angle -= c.angle;
 	this->calculateNormal();
 	return *this;
+}
+
+void loadNormal(Complex &z){
+	string comlexNumber1;
+	stringstream ss;
+	double a, b;
+	char choice;
+
+	std::cin >> comlexNumber1;
+	ss << comlexNumber1;
+	ss >> a;
+	ss >> choice;
+	ss >> b;
+	ss >> choice;
+	z.setNormal(a,b);
+}
+
+void loadVerzor(Complex &z){
+	string comlexNumber1;
+	stringstream ss;
+	double a, b;
+	char choice;
+
+	std::cin >> comlexNumber1;
+	ss << comlexNumber1;
+	ss >> a;
+	ss >> choice;
+	ss >> b;
+	ss >> choice;
+	z.setVersor(a,b);
+}
+
+void loadComplexNumber(Complex &z){
+	char choice;
+	//system("clear");
+	std::cout << "Do you want to enter a normal form or a verzor form? (N/v)" << endl;
+	std::cin >> choice;
+	
+	if(choice == 'v'){
+		std::cout << "Enter a complex number in verzor form(xLy): ";
+		loadVerzor(z);
+	}
+	else{
+		std::cout << "Enter a complex numberin normal form(x+/-yi): ";
+		loadNormal(z);
+	}
 }

@@ -4,8 +4,12 @@
 #include <iostream>
 #include <cmath>
 #include <random>
+#include <string>
+#include <sstream>
 
 #define PI 3.1415926536
+#define EQUALS 10000
+
 using namespace std;
 
 class Complex{
@@ -31,10 +35,6 @@ public:
 		apsoluteValue = sqrt(pow(Re, 2) + pow(Im, 2));
 		angle = atan(Im/Re) * (180/PI);
 	}
-	/*Complex(double an, double val) : angle(an), apsoluteValue(val){
-		Re = apsoluteValue * cos(angle);
-		Im = apsoluteValue * sin(angle); 
-	}*/
 
 	Complex &setNormal(double re, double im){
 		Re = re;
@@ -66,5 +66,10 @@ public:
 	Complex &operator*=(Complex c);
 	Complex &operator/=(Complex c);
 };
+
+void loadNormal(Complex &z);
+void loadVerzor(Complex &z);
+
+void loadComplexNumber(Complex &z);
 
 #endif
