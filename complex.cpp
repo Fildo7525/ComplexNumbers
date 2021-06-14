@@ -3,7 +3,7 @@
 string Complex::getNumberNormal() const{
 	stringstream ss;
 	string out;
-	ss << Re << " + " << Im << "i";   
+	ss << Re << " ", (Im < 0) ? ss << "- " << Im*(-1) << "i": ss << "+ " << Im << "i";  
 	getline(ss, out);
 	return out;
 }
@@ -85,10 +85,7 @@ void loadNormal(Complex &z){
 
 	std::cin >> comlexNumber1;
 	ss << comlexNumber1;
-	ss >> a;
-	ss >> choice;
-	ss >> b;
-	ss >> choice;
+	ss >> a >> b >> choice;
 	z.setNormal(a,b);
 }
 
@@ -100,10 +97,7 @@ void loadVerzor(Complex &z){
 
 	std::cin >> comlexNumber1;
 	ss << comlexNumber1;
-	ss >> a;
-	ss >> choice;
-	ss >> b;
-	ss >> choice;
+	ss >> a >> b >> choice;
 	z.setVersor(a,b);
 }
 
