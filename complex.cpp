@@ -45,21 +45,23 @@ Complex &Complex::operator-=(Complex c){
 	return *this;
 }
 
-bool Complex::operator==(Complex c) {
+bool Complex::operator==(Complex c) const{
 	return ((int)(this->Re*EQUALS) == (int)(c.Re*EQUALS) && (int)(this->Im*EQUALS) == (int)(c.Im*EQUALS)) ? true : false;
 }
 
-bool Complex::operator!=(Complex c) {
+bool Complex::operator!=(Complex c) const {
 	return ((int)(this->Re*EQUALS) == (int)(c.Re*EQUALS) && (int)(this->Im*EQUALS) == (int)(c.Im*EQUALS)) ? false : true;
 }
 
 Complex Complex::operator*(Complex c) {
-	Complex mult(this->apsoluteValue * c.apsoluteValue, this->angle + c.angle);
+	Complex mult;
+	mult.setVersor(this->apsoluteValue * c.apsoluteValue, this->angle + c.angle);
 	return mult;
 }
 
 Complex Complex::operator/(Complex c) {
-	Complex div(this->apsoluteValue / c.apsoluteValue, this->angle - c.angle);
+	Complex div;
+	div.setVersor(this->apsoluteValue / c.apsoluteValue, this->angle - c.angle);
 	return div;
 }
 

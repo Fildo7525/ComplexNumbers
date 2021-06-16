@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <cmath>
-#include <random>
+//#include <random>
 #include <string>
 #include <sstream>
 
 #define PI 3.1415926536
-#define EQUALS 10000
+#define EQUALS 1000
 
 using namespace std;
 
@@ -59,8 +59,8 @@ public:
 	Complex operator-(Complex c);
 	Complex &operator+=(Complex c);
 	Complex &operator-=(Complex c);
-	bool operator==(Complex c);
-	bool operator!=(Complex c);
+	bool operator==(Complex c) const;
+	bool operator!=(Complex c) const;
 	Complex operator*(Complex c);
 	Complex operator/(Complex c);
 	Complex &operator*=(Complex c);

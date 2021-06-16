@@ -3,10 +3,36 @@
 int main(){
 	system("clear");
 	char c;
-	Complex z,x;
+	Complex z1(10,10),z2(0,10),a1, a2, ans;
 	bool loop = true;
+
+	a1 = z1 * z2;
+	cout << "Ans1:" << endl;
+	a1.print();
+	cout << endl;
+
+	a2 = z1 + z2;
+	cout << "Ans2:" << endl;
+	a2.print();
+	cout << endl;
+
+	ans = a1/a2;
+	cout << "Ans:" << endl;
+	ans.print();
+	cout << endl;
+
+	Complex compare(2,6);
+	cout << "Compare:" << endl;
+	compare.print();
+	cout << endl;
+	cout << "Comparing: " << (ans==compare) << endl;
+
+
+	z1.print();
+	z2.print();
+
 	
-	std::cout << "~~~ This is a general Complex number calculator ~~~" << endl << endl;
+	/*std::cout << "~~~ This is a general Complex number calculator ~~~" << endl << endl;
 	while(loop){
 		cout << "Do you want to:\n\ta) Display number\n\tb) add numbers\n\tc) substract numbers\n\td) multiply numbers\n\te) divide numbers\n\tf) compare numbers\n\n"<<ends;
 		cin >> c;
@@ -64,6 +90,6 @@ int main(){
 		if(c == 'n' || c == 'N')
 			loop = false;
 		system("clear");
-	}
+	}*/
 	return 0;
 }
